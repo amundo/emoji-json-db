@@ -1,0 +1,32 @@
+{
+  "tasks": {
+    "download-cldr": {
+      "description": "Download CLDR data",
+      "command": "cd sources/cldr; deno run --allow-net --allow-write download-cldr-emoji-annotations.js"
+    },
+    "download-unicode-org": {
+      "description": "Download Unicode.org data",
+      "command": "cd sources/unicode.org; deno run --allow-net --allow-write download-unicode-org-emoji.js"
+    },
+    "download-gemoji": {
+      "description": "Download gemoji data",
+      "command": "cd sources/gemoji; deno run --allow-net --allow-write  download-gemoji.js"
+    },
+    "merge": {
+      "description": "Merge sources into a single JSON database file",
+      "command": "deno run --allow-read=. --allow-write merge-sources.js",
+      "dependencies": [
+        "download-cldr",
+        "download-unicode-org",
+        "download-gemoji"
+      ]
+    }
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/path": "jsr:@std/path@^1.0.8"
+  },
+  "fmt": {
+    "semiColons": false
+  }
+}
