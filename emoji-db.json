@@ -5,7 +5,7 @@
       "gemoji",
       "cldr"
     ],
-    "description": "Merged emojis from multiple sources with duplicates removed",
+    "description": "A simple emoji database with tags and other useful information",
     "github": "https://github.com/amundo/emoji-json-db",
     "fields": [
       {

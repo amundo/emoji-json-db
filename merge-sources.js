@@ -72,39 +72,48 @@ const simplifiedEmojis = uniqueEmojis.map((emoji) => trimEmoji(emoji))
 
 // Metadata for the final JSON file
 const metadata = {
-  "sources": Object.keys(sourceData),
-  "description": "Merged emojis from multiple sources with duplicates removed",
-  "github": "https://github.com/amundo/emoji-json-db",
-  "fields": [
-    { "name": "emoji", "type": "String", "description": "The emoji character" },
-    {
-      "name": "unicodeVersion",
-      "type": "String",
-      "description": "The Unicode version when the emoji was added",
-    },
-    {
-      "name": "name",
-      "type": "String",
-      "description": "The name of the emoji",
-    },
-    {
-      "name": "group",
-      "type": "String",
-      "description": "The group of the emoji",
-    },
-    {
-      "name": "subgroup",
-      "type": "String",
-      "description": "The subgroup of the emoji",
-    },
-    {
-      "name": "sources",
-      "type": "Array",
-      "description": "The sources of the emoji",
-    },
-  ],
-  "lastModified": new Date().toISOString(),
-}
+    "sources": [
+      "unicode",
+      "gemoji",
+      "cldr"
+    ],
+    "description": "A simple emoji database with tags and other useful information",
+    "github": "https://github.com/amundo/emoji-json-db",
+    "fields": [
+      {
+        "name": "emoji",
+        "type": "String",
+        "description": "The emoji character"
+      },
+      {
+        "name": "unicodeVersion",
+        "type": "String",
+        "description": "The Unicode version when the emoji was added"
+      },
+      {
+        "name": "name",
+        "type": "String",
+        "description": "The name of the emoji"
+      },
+      {
+        "name": "group",
+        "type": "String",
+        "description": "The group of the emoji"
+      },
+      {
+        "name": "subgroup",
+        "type": "String",
+        "description": "The subgroup of the emoji"
+      },
+      {
+        "name": "sources",
+        "type": "Array",
+        "description": "The sources of the emoji"
+      }
+    ],
+    "lastModified": "2024-12-29T01:20:52.525Z"
+  }
+
 
 // Combine metadata and emojis into a final JSON object
 const emojiDb = {
@@ -114,3 +123,6 @@ const emojiDb = {
 
 // Save the reduced dataset
 Deno.writeTextFileSync("emoji-db.json", JSON.stringify(emojiDb, null, 2))
+
+console.log("Write file: emoji-db.json\n")
+
